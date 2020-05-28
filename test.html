@@ -4,6 +4,7 @@
     body{font-size:2em;}
   </style>
 
+ 
 <h2>Sensoren von mobilen Geräten auslesen</h2>
   <b>Kompass</b>
 <p>alpha: <span id="datenAlpha"></span></p>
@@ -15,6 +16,22 @@
  
 <p><b>Lage</b></p> 
 <p> x-Orientierung: <span id="xgyro"></span></p>
+  
+  <script>
+  function ausrichtungAuslesen(ereignis){
+    var WinkelAlpha=Math.round(ereignis.alpha*100)/100;
+    var WinkelBeta=Math.round(ereignis.beta*100)/100;
+    var WinkelGamma=Math.round(ereignis.gamma*100)/100;
+    
+    ducument.getElementById('datenAlpha').innerHTML = WinkelAlpha;
+    ducument.getElementById('datenBeta').innerHTML = WinkelBeta;
+    ducument.getElementById('datenAlpha').innerHTML = WinkelGamma;
+    
+  }
+  
+  window.onload = function() {
+  window.addEventListener("deviceorientation", ausrichtungAuslesen, false);
+}
   
   
 </script>
